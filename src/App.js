@@ -1,10 +1,11 @@
 import './App.css';
 import React, {useState} from 'react';
 import {marked} from 'marked'
+import useLocalStorage from './useLocalstorage';
 
 const App = () => {
-  const [code, setCode] = useState('## Hello')
-  const [compiled, setCompiled] = useState('<h2 id="hello">Hello</h2>')
+  const [code, setCode ,compiled ,setCompiled] = useLocalStorage("markdown", "## Hello Markdown","markdowncompiled",'<h2 id="hello">Hello</h2>');
+
   const [hide, hidePreview] = useState(true)
 
   const openMD = () => {
@@ -39,6 +40,7 @@ const App = () => {
             <textarea value={compiled}/>
           </div>
         }
+       
       </div>
     </>
   )
